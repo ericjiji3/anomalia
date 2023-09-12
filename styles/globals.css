@@ -38,6 +38,11 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --grid-color: rgba(115,59,139,0.7);
+  --grid-size: 60px;
+  --grid-blur: 1px;
+  --main-grid-size: 31px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -86,13 +91,13 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }
 
 a {
