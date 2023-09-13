@@ -2,10 +2,36 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import {useState, useRef, useEffect} from 'react';
+import Invited from './invited';
+// import Ping from '../public/pingSound.mp3';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
+  const audioRef = useRef();
+
+  const setModal = () => {
+
+    setShowModal(!showModal);
+    console.log(showModal);
+    console.log("hello");
+    
+  }
+  useEffect(()=>{
+    if(showModal){
+      if (audioRef.current) {
+        setTimeout(()=>{
+          audioRef.current.play()
+        }, 2500)
+      } else {
+        // Throw error
+        console.log('ERR')
+      }
+    }
+  }, [showModal])
+
   return (
     <>
       <Head>
@@ -14,13 +40,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div class={styles.homeContainer}>
-        <div class={styles.overlay}></div>
-        <div class={styles.mainGrid}></div>
-        <div class={styles.movingGrid}></div>
-        <div class={styles.inviteContainer}>
-          sup
+      <audio ref={audioRef} src='/pingSound.mp3' />
+      <div className={styles.homeContainer}>
+        <div className={styles.overlay}></div>
+        <div className={styles.screen}>
+          <div className={styles.folder} onClick={() => setModal()}></div>
+          <div className={showModal ? `${styles.modal} ${styles.active}` : `${styles.modal}`}>
+            <Invited />
+          </div>
+          
         </div>
+
+
       </div>
     </>
   )

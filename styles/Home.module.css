@@ -11,7 +11,48 @@
   position:absolute;
   left:0;
   top:0;
-  background-image: repeating-linear-gradient(rgba(0,0,0,0.3) 0,transparent 1px,transparent 2px,rgba(0,0,0,0.3) 3px);
+  background-image: repeating-linear-gradient(rgba(0,0,0,0.3) 0,transparent 2px,transparent 2px,rgba(0,0,0,0.3) 3px);
+}
+.screen{
+  width: 100%;
+  height: 100%;
+  background-color: #6692c1;
+}
+.screen .folder{
+  background-image: url('../public/images/closedFolder.png');
+  width: 32px;
+  height: 32px;
+  background-size: cover;
+  position: absolute;
+  z-index: 2;
+  top: 5%;
+  left: 2.5%;
+}
+.screen .modal{
+  position: absolute;
+  top: 5%;
+  left: 2.5%;
+  opacity: 0;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  transition: 0.75s all steps(10, end);
+  /* border: 1.5px solid black; */
+  z-index: 1;
+  
+  overflow: hidden;
+}
+.screen .modal.active{
+  opacity: 1;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%) scale(1);
+  transition: 0.75s all steps(10, end);
+  animation: 1s scaleModal ease-in forwards;
+  animation-delay: 1s;
 }
 .mainGrid{
   /* position:absolute;
@@ -26,7 +67,7 @@
   z-index: 0;
   border-bottom: 2px solid var(--grid-color); */
 }
-.movingGrid{
+.movingBottomGrid{
 
   position:absolute;
   bottom: -40%;
@@ -49,12 +90,22 @@
     transform:perspective(50vh) rotateX(60deg) translateZ(10px) translateY(var(--grid-size));
   }
 }
-.inviteContainer{
-  position: absolute;
-  width: 100%;
-  height: 77%;
-  top: 0%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index:1 ;
+@keyframes moving-grid-rev{
+  0%{
+    transform:perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-var(--grid-size));
+    
+  }
+  100%{
+    transform:perspective(50vh) rotateX(60deg) translateZ(10px) translateY(var(--grid-size));
+  }
+}
+@keyframes scaleModal{
+  0%{
+    width: 50%;
+    height: 50%;
+  }
+  100%{
+    width: 100%;
+    height: 100%;
+  }
 }

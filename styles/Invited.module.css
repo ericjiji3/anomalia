@@ -1,0 +1,164 @@
+.invitedContainer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: 0!important;
+}
+.windowBar{
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to bottom,  #f6f6f6 0%,#dadada 100%);
+    padding: 10px;
+    border-radius: 7px 7px 0px 0px;
+    border: 1px solid #d8d8d8;
+    border-bottom: 1px solid #b4b4b4;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+}
+.pane{
+    overflow-y: unset!important;
+}
+.windowBar .dot{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #f9f9f9;
+    border-radius: 50%;
+    margin: 0 4px 0 0;
+    transform: translateY(-50%);
+}
+.windowBar .dot.red{
+    background: #FF6057;
+    border: 1px solid #E14640;
+}
+.windowBar .dot.amber{
+    background: #FFBD2E;
+    border: 1px solid #DFA123;
+}
+.windowBar .dot.green{
+    background: #27C93F;
+    border: 1px solid #1DAD2B;
+}
+.bg{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url('../public/images/bg.gif');
+    background-size: cover;
+}
+.bg .dialogContainer{
+    position: absolute;
+    width: 50%;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: 3.5s showDialog steps(1, end) forwards;
+}
+.bg .dialogContainer .header{
+    margin-bottom: 25px;
+    /* background: linear-gradient(#000 50%,transparent 0);
+    background-clip: content-box;
+    background-size: 6.6666666667% 13.3333333333%; */
+}
+.bg .dialogContainer .flex{
+    display: flex;
+}
+.bg .dialogContainer .flex .textContainer{
+    width: 75%;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+.bg .dialogContainer .flex .textContainer .text{
+    margin-bottom: 15px;
+}
+.bg .dialogContainer .flex .inputContainer .inputHeader{
+    font-size: 1.25em!important;
+}
+.bg .dialogContainer .flex .imagesContainer{
+    width: 25%;
+    text-align: center;
+    position: relative;
+
+}
+.bg .dialogContainer .flex .imagesContainer .imageContainer{
+    margin: 5px 0;
+
+}
+.bg .dialogContainer .flex .imagesContainer .imageContainer img{
+    /* width: 100%!important;
+    object-fit: cover; */
+}
+.bg .dialogContainer .flex .imagesContainer::after{
+    content: '';
+    position: absolute;
+    left: 50%; 
+    top: 0;
+    transform: translateX(-50%);
+    width: 110px; 
+    height: 100%;
+    margin: 0 auto;
+    background: linear-gradient(#000 50%,transparent 0);
+    background-clip: content-box;
+    background-size: 6.6666666667% 0.9%;
+}
+
+@keyframes showDialog{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@media(max-width: 1200px){
+    .bg .dialogContainer{
+        text-align: center;
+    }
+    .bg .dialogContainer .flex{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .bg .dialogContainer .flex .textContainer{
+        width: 100%;
+    }
+    .bg .dialogContainer .flex .textContainer .header{
+        margin-bottom: 10px;
+    }
+    .bg .dialogContainer .flex .imagesContainer{
+        display: flex;
+        width: 100%;
+        margin-bottom: 25px;
+        justify-content: space-between;
+    }
+    .bg .dialogContainer .flex .imagesContainer::after{
+        width: 100%; 
+        height: 100%;
+        background-size: 6.6666666667% 3%;
+    }
+    .bg .dialogContainer .flex .imagesContainer .imageContainer{
+        margin: 0;
+    }
+    .bg .dialogContainer .flex .sectionContainer{
+        justify-content: center!important;
+    }
+}
+@media(max-width: 900px){
+    .bg .dialogContainer{
+        width: 75%;
+    }
+}
+@media(max-width: 500px){
+    .bg .dialogContainer{
+        width: 85%;
+        font-size: 0.75em;
+    }
+    .bg .dialogContainer .flex .imagesContainer .imageContainer img{
+        width: 100px;
+        height: 100px;
+    }
+}
