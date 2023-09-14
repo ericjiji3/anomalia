@@ -55,6 +55,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
+    padding: 20px!important;
     /* animation: .5s showDialog steps(1, end) forwards;
     animation-delay: 3s; */
 }
@@ -88,19 +89,46 @@
 .bg .dialogContainer .flex .inputContainer .submitButt{
     margin-top: 10px;
 }
+.bg .dialogContainer .flex .inputContainer .resultContainer{
+    margin-top: 10px;
+}
+.bg .dialogContainer .flex .inputContainer .resultContainer .nameInvalid, .bg .dialogContainer .flex .inputContainer .resultContainer .emailInvalid, .bg .dialogContainer .flex .inputContainer .resultContainer .apiInvalid{
+    height: 0;
+    opacity: 0;
+    transition: all 0.25s ease-in;
+}
+.bg .dialogContainer .flex .inputContainer .resultContainer .nameInvalid.active{
+    height: 100%;
+    opacity: 1;
+    transition: all 0.25s ease-in;
+}
+.bg .dialogContainer .flex .inputContainer .resultContainer .emailInvalid.active{
+    height: 100%;
+    opacity: 1;
+    transition: all 0.25s ease-in;
+}
+.bg .dialogContainer .flex .inputContainer .resultContainer .apiInvalid.active{
+    height: 100%;
+    opacity: 1;
+    transition: all 0.25s ease-in;
+}
 .bg .dialogContainer .flex .imagesContainer{
     width: 25%;
     text-align: center;
     position: relative;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .bg .dialogContainer .flex .imagesContainer .imageContainer{
     margin: 5px 0;
-
+    text-align: end;
 }
 .bg .dialogContainer .flex .imagesContainer .imageContainer img{
     /* width: 100%!important;
     object-fit: cover; */
+    width: 80%;
+    object-fit: cover;
 }
 .bg .dialogContainer .flex .imagesContainer::after{
     content: '';
@@ -111,9 +139,9 @@
     width: 110px; 
     height: 100%;
     margin: 0 auto;
-    background: linear-gradient(#000 50%,transparent 0);
+    /* background: linear-gradient(#000 50%,transparent 0);
     background-clip: content-box;
-    background-size: 6.6666666667% 0.9%;
+    background-size: 6.6666666667% 0.9%; */
 }
 
 @keyframes showDialog{
@@ -141,9 +169,10 @@
     }
     .bg .dialogContainer .flex .imagesContainer{
         display: flex;
+        flex-direction: row;
         width: 100%;
         margin-bottom: 25px;
-        justify-content: space-between;
+        justify-content: center;
     }
     .bg .dialogContainer .flex .imagesContainer::after{
         width: 100%; 
@@ -151,7 +180,14 @@
         background-size: 6.6666666667% 3%;
     }
     .bg .dialogContainer .flex .imagesContainer .imageContainer{
-        margin: 0;
+        margin: 0 5px;
+    }
+    .bg .dialogContainer .flex .imagesContainer .imageContainer img{
+        width: 125px;
+        height: 125px;
+    }
+    .bg .dialogContainer .flex .inputContainer .labelInput{
+        margin: 5px auto;
     }
     .bg .dialogContainer .flex .sectionContainer{
         justify-content: center!important;
@@ -161,6 +197,12 @@
     .bg .dialogContainer{
         width: 75%;
     }
+    .bg .dialogContainer .flex .inputContainer .labelInput{
+        width: 100%;
+    }
+    .bg .dialogContainer .flex .inputContainer .labelInput label{
+        margin-bottom: 2.5px;
+    }
 }
 @media(max-width: 500px){
     .bg .dialogContainer{
@@ -168,7 +210,7 @@
         font-size: 0.75em;
     }
     .bg .dialogContainer .flex .imagesContainer .imageContainer img{
-        width: 100px;
+        width: 90px;
         height: 100px;
     }
 }

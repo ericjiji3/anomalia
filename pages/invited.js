@@ -13,6 +13,8 @@ export default function Invited(){
     const [email, setEmail] = useState("");
     const [nameErr, setNameErr] = useState(false);
     const [emailErr, setEmailErr] = useState(false);
+    const [apiErr, setApiErr] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     const form = useRef();
     
@@ -49,6 +51,7 @@ export default function Invited(){
         e.preventDefault();
         setNameErr(false);
         setEmailErr(false);
+        setApiErr(false);
         console.log("name", name)
         console.log("email", email);
         if(name == ''){
@@ -68,9 +71,11 @@ export default function Invited(){
             emailjs.sendForm('service_029dz8q', 'template_xtdv1r7', e.target, '3TfhFL9kwSBycbVYV')
             .then((result) => {
                 console.log(result.text);
+                setSuccess(true);
                 e.target.reset();
             }, (error) => {
                 console.log(error.text);
+                setApiErr(true);
                 e.target.reset();
             });
             console.log('success!!!!');
@@ -97,7 +102,7 @@ export default function Invited(){
                     
                     <div className={styles.flex}>
                         <div className={styles.textContainer}>
-                        <h1 className={`${styles.header} dialog-text`}>Your Invited</h1>
+                            <h1 className={`${styles.header} dialog-text`}>Your Invited</h1>
                             <p className={`${styles.text} dialog-text`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus feugiat in ante metus dictum at. Accumsan in nisl nisi scelerisque eu ultrices vitae. Porttitor eget dolor morbi non. Pulvinar sapien et ligula ullamcorper malesuada proin libero. Euismod in pellentesque massa placerat duis ultricies lacus. Auctor neque vitae tempus quam pellentesque. Commodo elit at imperdiet dui accumsan sit amet nulla. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Arcu ac tortor dignissim convallis aenean et tortor at risus. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Nulla facilisi morbi tempus iaculis.</p>
                             <form className={styles.inputContainer} ref={form} onSubmit={submitForm}>
                                 <div className={styles.labelInput}>
@@ -109,17 +114,31 @@ export default function Invited(){
                                     <input id="email" name="email" type="text" placeholder="" value={email} onChange={(e) => setEmail(e.target.value)}/>
                                 </div>
                                 <input className={`${styles.submitButt} btn`} type="submit" valaue="Submit"/>
+                                <div className={styles.resultContainer}>
+                                    <div className={nameErr ? `${styles.nameInvalid} ${styles.active}` : `${styles.nameInvalid}`}>
+                                        <p>Full Name is empty.</p>
+                                    </div>
+                                    <div className={emailErr ? `${styles.emailInvalid} ${styles.active}` : `${styles.emailInvalid}`}>
+                                        <p>Email is invalid.</p>
+                                    </div>
+                                    <div className={apiErr ? `${styles.apiInvalid} ${styles.active}` : `${styles.apiInvalid}`}>
+                                        <p>An error occurred.</p>
+                                    </div>
+                                    {/* <div>
+                                        
+                                    </div> */}
+                                </div>
                             </form>
                         </div>
                         <div className={styles.imagesContainer}>
                             <div className={styles.imageContainer}>
-                                <Image src={im1} width={110} height={110} alt="oops"/>
+                                <Image src={im1} width={120} height={120} alt="oops"/>
                             </div>
                             <div className={styles.imageContainer}>
-                                <Image src={im2} width={110} height={110} alt="oops"/>
+                                <Image src={im2} width={120} height={120} alt="oops"/>
                             </div>
                             <div className={styles.imageContainer}>
-                                <Image src={im3} width={110} height={110} alt="oops"/>
+                                <Image src={im3} width={120} height={120} alt="oops"/>
                             </div>
                         </div>
                     </div>
