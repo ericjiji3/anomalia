@@ -26,6 +26,7 @@ export default function Home() {
       if (ping) {
         let pingAudio = setTimeout(()=>{
           ping.play()
+          setPing(null);
         }, 2500)
         return ()=>{
           clearTimeout(pingAudio);
