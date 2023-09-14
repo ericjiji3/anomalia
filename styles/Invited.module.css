@@ -79,8 +79,14 @@
 .bg .dialogContainer .flex .textContainer .text{
     margin-bottom: 15px;
 }
-.bg .dialogContainer .flex .inputContainer .inputHeader{
-    font-size: 1.25em!important;
+.bg .dialogContainer .flex .inputContainer .labelInput{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 5px 0;
+}
+.bg .dialogContainer .flex .inputContainer .submitButt{
+    margin-top: 10px;
 }
 .bg .dialogContainer .flex .imagesContainer{
     width: 25%;
