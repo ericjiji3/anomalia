@@ -1,9 +1,22 @@
 import styles from '@/styles/Invited.module.css'
+import {useState,  useEffect} from 'react';
 import macStyles from '@sakun/system.css';
 import Image from 'next/image';
-import im1 from '../public/images/testImage.jpg'
+import im1 from '../public/images/dialogimg1.jpg';
+import im2 from '../public/images/dialogimg2.png';
+import im3 from '../public/images/dialogimg3.png';
 
 export default function Invited(){
+    const [showDialog, setShowDialog] = useState(false);
+
+    useEffect(()=>{
+        let setDialog = setTimeout(()=>{
+            setShowDialog(true);
+        }, 2500)
+        return ()=>{
+            clearTimeout(setDialog);
+        }
+    })
     return(
         <div className={`${styles.invitedContainer} window`}>
             <div className={`title-bar`}>
@@ -13,7 +26,7 @@ export default function Invited(){
             </div>
             <div className={`separator`}></div>
             <div className={styles.bg}>
-                <div className={`${styles.dialogContainer} standard-dialog`}>
+                <div className={showDialog ? `${styles.dialogContainer} ${styles.active} standard-dialog` : `${styles.dialogContainer} standard-dialog`}>
                     
                     <div className={styles.flex}>
                         <div className={styles.textContainer}>
@@ -32,10 +45,10 @@ export default function Invited(){
                                 <Image src={im1} width={110} height={110} alt="oops"/>
                             </div>
                             <div className={styles.imageContainer}>
-                                <Image src={im1} width={110} height={110} alt="oops"/>
+                                <Image src={im2} width={110} height={110} alt="oops"/>
                             </div>
                             <div className={styles.imageContainer}>
-                                <Image src={im1} width={110} height={110} alt="oops"/>
+                                <Image src={im3} width={110} height={110} alt="oops"/>
                             </div>
                         </div>
                     </div>

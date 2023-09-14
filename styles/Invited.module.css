@@ -55,7 +55,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-    animation: 3.5s showDialog steps(1, end) forwards;
+    /* animation: .5s showDialog steps(1, end) forwards;
+    animation-delay: 3s; */
+}
+.bg .dialogContainer.active{
+    opacity: 1;
 }
 .bg .dialogContainer .header{
     margin-bottom: 25px;

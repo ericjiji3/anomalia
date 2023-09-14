@@ -16,7 +16,9 @@
 .screen{
   width: 100%;
   height: 100%;
-  background-color: #6692c1;
+  /* background-color: #6692c1; */
+  background-image: url('../public/images/firstBg.jpg');
+  background-size: cover;
 }
 .screen .folder{
   background-image: url('../public/images/closedFolder.png');

@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
+  const [ping, setPing] = useState(null);
   const audioRef = useRef();
 
   const setModal = () => {
@@ -20,11 +21,15 @@ export default function Home() {
     
   }
   useEffect(()=>{
+    setPing(new Audio('/pingSound.mp3'));
     if(showModal){
-      if (audioRef.current) {
-        setTimeout(()=>{
-          audioRef.current.play()
+      if (ping) {
+        let pingAudio = setTimeout(()=>{
+          ping.play()
         }, 2500)
+        return ()=>{
+          clearTimeout(pingAudio);
+        }
       } else {
         // Throw error
         console.log('ERR')
@@ -40,7 +45,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <audio ref={audioRef} src='/pingSound.mp3' />
+      {/* <audio ref={audioRef} src='/pingSound.mp3' /> */}
       <div className={styles.homeContainer}>
         <div className={styles.overlay}></div>
         <div className={styles.screen}>
