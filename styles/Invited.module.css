@@ -40,6 +40,18 @@
     background: #27C93F;
     border: 1px solid #1DAD2B;
 }
+.invitedContainer .iconContainer{
+    background-image: url('../public/images/audioIcon.png');
+}
+.invitedContainer .iconContainer.muted{
+    background-image: url('../public/images/muteIcon.png');
+}
+.invitedContainer .iconContainer:active::before{
+    background: none!important;
+}
+.invitedContainer .iconContainer:active::after{
+    background: none!important;
+}
 .bg{
     position: relative;
     width: 100%;
@@ -92,7 +104,7 @@
 .bg .dialogContainer .flex .inputContainer .resultContainer{
     margin-top: 10px;
 }
-.bg .dialogContainer .flex .inputContainer .resultContainer .nameInvalid, .bg .dialogContainer .flex .inputContainer .resultContainer .emailInvalid, .bg .dialogContainer .flex .inputContainer .resultContainer .apiInvalid{
+.bg .dialogContainer .flex .inputContainer .resultContainer .nameInvalid, .bg .dialogContainer .flex .inputContainer .resultContainer .emailInvalid, .bg .dialogContainer .flex .inputContainer .resultContainer .apiInvalid, .bg .dialogContainer .flex .inputContainer .resultContainer .success{
     height: 0;
     opacity: 0;
     transition: all 0.25s ease-in;
@@ -108,6 +120,11 @@
     transition: all 0.25s ease-in;
 }
 .bg .dialogContainer .flex .inputContainer .resultContainer .apiInvalid.active{
+    height: 100%;
+    opacity: 1;
+    transition: all 0.25s ease-in;
+}
+.bg .dialogContainer .flex .inputContainer .resultContainer .success.active{
     height: 100%;
     opacity: 1;
     transition: all 0.25s ease-in;

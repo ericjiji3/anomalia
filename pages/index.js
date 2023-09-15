@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [ping, setPing] = useState(null);
+  const [music, setMusic] = useState(null);
   const audioRef = useRef();
 
   const setModal = () => {
@@ -20,21 +21,40 @@ export default function Home() {
     console.log("hello");
     
   }
+
   useEffect(()=>{
     setPing(new Audio('/pingSound.mp3'));
+    setMusic(new Audio('/music.mp3'));
     if(showModal){
       if (ping) {
         let pingAudio = setTimeout(()=>{
           ping.play()
           setPing(null);
         }, 2500)
+        let musicAudio = setTimeout(()=>{
+          // music.setVolume(0.05);
+          music.play();
+          // let fadeIn = setInterval(()=>{
+
+          // })
+          setMusic(null);
+        }, 5000)
         return ()=>{
           clearTimeout(pingAudio);
+          clearTimeout(musicAudio);
         }
       } else {
         // Throw error
         console.log('ERR')
       }
+
+      // if(music){
+
+      // }else {
+      //   // Throw error
+      //   console.log('ERR')
+      // }
+
     }
   }, [showModal])
 
@@ -52,7 +72,7 @@ export default function Home() {
         <div className={styles.screen}>
           <div className={styles.folder} onClick={() => setModal()}></div>
           <div className={showModal ? `${styles.modal} ${styles.active}` : `${styles.modal}`}>
-            <Invited />
+            <Invited show={showModal}/>
           </div>
           
         </div>

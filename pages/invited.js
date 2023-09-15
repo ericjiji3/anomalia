@@ -7,7 +7,7 @@ import im2 from '../public/images/dialogimg2.png';
 import im3 from '../public/images/dialogimg3.png';
 import emailjs from '@emailjs/browser';
 
-export default function Invited(){
+export default function Invited(props){
     const [showDialog, setShowDialog] = useState(false);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -15,17 +15,26 @@ export default function Invited(){
     const [emailErr, setEmailErr] = useState(false);
     const [apiErr, setApiErr] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [audioIcon, setAudioIcon] = useState(true);
 
     const form = useRef();
     
     useEffect(()=>{
-        let setDialog = setTimeout(()=>{
-            setShowDialog(true);
-        }, 2500)
-        return ()=>{
-            clearTimeout(setDialog);
+        if(props.show){
+            let setDialog = setTimeout(()=>{
+                setShowDialog(true);
+            }, 2500)
+            return ()=>{
+                clearTimeout(setDialog);
+            }
         }
+        
     })
+
+    function toggleIcon(e){
+        e.preventDefault();
+        setAudioIcon(!audioIcon);
+    }
 
     function validateFields(data){
         var validate = true;
@@ -92,9 +101,9 @@ export default function Invited(){
     return(
         <div className={`${styles.invitedContainer} window`}>
             <div className={`title-bar`}>
-                <button aria-label="Close" className={`close`}></button>
+                <button aria-label="Close" onClick={toggleIcon} className={audioIcon ? `${styles.iconContainer} close` : `${styles.iconContainer} close ${styles.muted}`}></button>
                 <h1 className={`title`}>De Anima</h1>
-                <button aria-label="Resize" className={`resize`}></button>
+                {/* <button aria-label="Resize" className={`resize`}></button> */}
             </div>
             <div className={`separator`}></div>
             <div className={styles.bg}>
@@ -124,9 +133,9 @@ export default function Invited(){
                                     <div className={apiErr ? `${styles.apiInvalid} ${styles.active}` : `${styles.apiInvalid}`}>
                                         <p>An error occurred.</p>
                                     </div>
-                                    {/* <div>
-                                        
-                                    </div> */}
+                                    <div className={success ? `${styles.success} ${styles.active}` : `${styles.success}`}>
+                                        <p>Check your email;)</p>
+                                    </div>
                                 </div>
                             </form>
                         </div>
