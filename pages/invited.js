@@ -16,6 +16,7 @@ export default function Invited(props){
     const [apiErr, setApiErr] = useState(false);
     const [success, setSuccess] = useState(false);
     const [audioIcon, setAudioIcon] = useState(true);
+    const [muted, setMuted] = useState(false);
 
     const form = useRef();
     
@@ -29,11 +30,14 @@ export default function Invited(props){
             }
         }
         
-    })
+    },[props.show])
 
     function toggleIcon(e){
         e.preventDefault();
         setAudioIcon(!audioIcon);
+        setMuted(!muted);
+        props.setMute(muted)
+        console.log("muteval: ", muted)
     }
 
     function validateFields(data){
@@ -107,6 +111,7 @@ export default function Invited(props){
             </div>
             <div className={`separator`}></div>
             <div className={styles.bg}>
+                {/* {showDialog &&  */}
                 <div className={showDialog ? `${styles.dialogContainer} ${styles.active} standard-dialog` : `${styles.dialogContainer} standard-dialog`}>
                     
                     <div className={styles.flex}>
@@ -153,6 +158,7 @@ export default function Invited(props){
                     </div>
                     
                 </div>
+{/* } */}
             </div>
 
             

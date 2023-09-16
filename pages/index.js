@@ -12,19 +12,29 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [ping, setPing] = useState(null);
   const [music, setMusic] = useState(null);
+  const [mute, setMute] = useState(false);
   const audioRef = useRef();
 
   const setModal = () => {
 
     setShowModal(!showModal);
-    console.log(showModal);
-    console.log("hello");
+
     
+  }
+  const playMusic = () =>{
+    music.play();
+  }
+  const muteMusic = () =>{
+    music.volume = 0;;
+  }
+  const unMuteMusic = () =>{
+    music.volume = 1;
   }
 
   useEffect(()=>{
     setPing(new Audio('/pingSound.mp3'));
     setMusic(new Audio('/music.mp3'));
+    
     if(showModal){
       if (ping) {
         let pingAudio = setTimeout(()=>{
@@ -33,30 +43,44 @@ export default function Home() {
         }, 2500)
         let musicAudio = setTimeout(()=>{
           // music.setVolume(0.05);
-          music.play();
+          // music.play();
+          playMusic();
           // let fadeIn = setInterval(()=>{
-
+            if(mute){
+              muteMusic();
+            }else{
+              unMuteMusic();
+            }
           // })
-          setMusic(null);
+          // setMusic(null);
         }, 5000)
-        return ()=>{
-          clearTimeout(pingAudio);
-          clearTimeout(musicAudio);
-        }
+
+        
+
+        // return ()=>{
+        //   clearTimeout(pingAudio);
+        //   clearTimeout(musicAudio);
+        // }
       } else {
-        // Throw error
+       
         console.log('ERR')
       }
+      
 
-      // if(music){
-
-      // }else {
-      //   // Throw error
-      //   console.log('ERR')
-      // }
 
     }
-  }, [showModal])
+  }, [showModal, mute])
+
+  // useEffect(()=>{
+  //   console.log(music)
+  //   if(music != null){
+  //     if(mute){
+  //       muteMusic();
+  //     }else{
+  //       unMuteMusic();
+  //     }
+  //   }
+  // }, [mute, music])
 
   return (
     <>
@@ -72,7 +96,7 @@ export default function Home() {
         <div className={styles.screen}>
           <div className={styles.folder} onClick={() => setModal()}></div>
           <div className={showModal ? `${styles.modal} ${styles.active}` : `${styles.modal}`}>
-            <Invited show={showModal}/>
+            <Invited show={showModal} setMute={setMute}/>
           </div>
           
         </div>
