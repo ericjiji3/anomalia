@@ -17,6 +17,7 @@ export default function Invited(props){
     const [success, setSuccess] = useState(false);
     const [audioIcon, setAudioIcon] = useState(true);
     const [muted, setMuted] = useState(false);
+    const [music, setMusic] = useState(null);
 
     const form = useRef();
     
@@ -31,6 +32,26 @@ export default function Invited(props){
         }
         
     },[props.show])
+
+    useEffect(()=>{
+        if(showDialog){
+            setMusic(new Audio('/music.mp3'));
+            // let musicAudio = setTimeout(()=>{
+            //     // music.setVolume(0.05);
+            //     // music.play();
+            //     playMusic();
+            //     // let fadeIn = setInterval(()=>{
+            //       if(mute){
+            //         muteMusic();
+            //       }else{
+            //         unMuteMusic();
+            //       }
+            //     // })
+            //     // setMusic(null);
+            //   }, 5000)
+            music.play();
+        }
+    }, [music, showDialog])
 
     function toggleIcon(e){
         e.preventDefault();

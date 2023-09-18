@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import macStyles from '@sakun/system.css';
 import styles from '@/styles/Home.module.css'
 import {useState, useRef, useEffect} from 'react';
 import Invited from './invited';
@@ -11,7 +12,6 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [ping, setPing] = useState(null);
-  const [music, setMusic] = useState(null);
   const [mute, setMute] = useState(false);
   const audioRef = useRef();
 
@@ -33,7 +33,7 @@ export default function Home() {
 
   useEffect(()=>{
     setPing(new Audio('/pingSound.mp3'));
-    setMusic(new Audio('/music.mp3'));
+    // setMusic(new Audio('/music.mp3'));
     
     if(showModal){
       if (ping) {
@@ -41,35 +41,18 @@ export default function Home() {
           ping.play()
           setPing(null);
         }, 2500)
-        let musicAudio = setTimeout(()=>{
-          // music.setVolume(0.05);
-          // music.play();
-          playMusic();
-          // let fadeIn = setInterval(()=>{
-            if(mute){
-              muteMusic();
-            }else{
-              unMuteMusic();
-            }
-          // })
-          // setMusic(null);
-        }, 5000)
 
-        
-
-        // return ()=>{
-        //   clearTimeout(pingAudio);
-        //   clearTimeout(musicAudio);
-        // }
+        return ()=>{
+          clearTimeout(pingAudio);
+        }
       } else {
        
         console.log('ERR')
       }
-      
-
 
     }
   }, [showModal, mute])
+
 
   // useEffect(()=>{
   //   console.log(music)
@@ -94,8 +77,10 @@ export default function Home() {
       <div className={styles.homeContainer}>
         <div className={styles.overlay}></div>
         <div className={styles.screen}>
-          <div className={styles.folder} onClick={() => setModal()}></div>
-          <h1 className={`${styles.folderName} dialog-text`}>DE ANIMA</h1>
+          <div className={styles.folderContainer} onClick={() => setModal()}>
+            <div className={styles.folder}></div>
+            <h1 className={`${styles.folderName} dialog-text`}>DE ANIMA</h1>
+          </div>    
           <div className={showModal ? `${styles.modal} ${styles.active}` : `${styles.modal}`}>
             <Invited show={showModal} setMute={setMute}/>
           </div>

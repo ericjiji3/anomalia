@@ -20,26 +20,33 @@
   background-image: url('../public/images/firstBg.jpg');
   background-size: cover;
 }
-.screen .folder{
+.screen .folderContainer{
+  position: relative;
+  z-index: 2;
+  top: 25px;
+  display: inline-block;
+  left: 30px;
+}
+.screen .folderContainer:hover{
+  cursor: pointer;
+}
+.screen .folderContainer .folder{
   background-image: url('../public/images/openFolder.png');
   width: 75px;
   height: 75px;
   background-size: cover;
-  position: relative;
-  z-index: 2;
-  top: 25px;
-  left: 30px;
+
   /* top: 5%;
   left: 2.5%; */
 }
-.screen .folderName{
-  position: relative;
-  z-index: 2;
-  top: 10px;
-  left: 25px;
+.screen .folderContainer .folderName{
+  text-align: center;
   color: #ffffff;
-  /* top: 5%;
-  left: 2.5%; */
+  font-size: .95rem;
+  font-weight: normal;
+}
+.screen .folderContainer:hover .folderName{
+  text-decoration: underline;
 }
 .screen .modal{
   position: absolute;
