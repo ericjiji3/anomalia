@@ -95,6 +95,7 @@ export default function Home() {
         <div className={styles.overlay}></div>
         <div className={styles.screen}>
           <div className={styles.folder} onClick={() => setModal()}></div>
+          <h1 className={`${styles.folderName} dialog-text`}>DE ANIMA</h1>
           <div className={showModal ? `${styles.modal} ${styles.active}` : `${styles.modal}`}>
             <Invited show={showModal} setMute={setMute}/>
           </div>
