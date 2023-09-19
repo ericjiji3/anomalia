@@ -225,6 +225,7 @@
     .bg .dialogContainer .flex .inputContainer .labelInput label{
         margin-bottom: 2.5px;
     }
+
 }
 @media(max-width: 500px){
     .bg .dialogContainer{
@@ -234,5 +235,8 @@
     .bg .dialogContainer .flex .imagesContainer .imageContainer img{
         width: 90px;
         height: 100px;
+    }
+    .invitedContainer .iconContainer{
+        display: none;
     }
 }
