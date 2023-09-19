@@ -213,9 +213,9 @@
     }
 }
 @media(max-width: 900px){
-    /* .bg{
+    .bg{
         height: 130%;
-    } */
+    }
     .bg .dialogContainer{
         width: 75%;
     }
