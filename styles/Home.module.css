@@ -66,7 +66,7 @@
 .screen .folderContainer:hover .folderName{
   text-decoration: underline;
 }
-.screen .modal{
+.modal{
   position: absolute;
   top: 5%;
   left: 2.5%;
@@ -80,7 +80,7 @@
   
   overflow: hidden;
 }
-.screen .modal.active{
+.modal.active{
   opacity: 1;
   top: 50%;
   left: 50%;

@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>De Anima</title>
         <meta name="description" content="De Anima" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -49,14 +49,15 @@ export default function Home() {
             <div className={styles.folder}></div>
             <h1 className={`${styles.folderName} dialog-text`}>DE ANIMA</h1>
           </div>    
-          <div className={showModal ? `${styles.modal} ${styles.active}` : `${styles.modal}`}>
-            <Invited show={showModal} setMute={setMute}/>
-          </div>
+
           
         </div>
 
 
       </div>
+      <div className={showModal ? `${styles.modal} ${styles.active}` : `${styles.modal}`}>
+            <Invited show={showModal} setMute={setMute}/>
+          </div>
     </>
   )
 }
