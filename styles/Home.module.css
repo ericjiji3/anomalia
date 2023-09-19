@@ -13,6 +13,24 @@
   top:0;
   background-image: repeating-linear-gradient(rgba(0,0,0,0.3) 0,transparent 2px,transparent 2px,rgba(0,0,0,0.3) 3px);
 }
+.overlay::after{
+  display: block;
+    position: absolute;
+    top: -200px;
+    left: -25%;
+    content: "";
+    width: 150%;
+    height: 200px;
+    filter: blur(4px);
+    background: #000;
+    opacity: 0.1;
+    z-index: 10000;
+    animation-name: screenLine;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    pointer-events: none;
+}
 .screen{
   width: 100%;
   height: 100%;
@@ -102,6 +120,13 @@
   animation:moving-grid 0.5s infinite linear;
   z-index:-1;
 }
+@media(max-width: 700px){
+  .screen .folderContainer .folder{
+    width: 50px;
+    height: 50px;
+  }
+}
+
 @keyframes moving-grid{
   0%{
     transform:perspective(50vh) rotateX(60deg) translateZ(10px) translateY(-var(--grid-size));
@@ -128,4 +153,9 @@
     width: 100%;
     height: 100%;
   }
+}
+@keyframes screenLine {
+  0% {top: -200px;}
+  50% {height: 100px;}
+  100% {top: 100%;}
 }

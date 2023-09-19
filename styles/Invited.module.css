@@ -170,7 +170,7 @@
     }
 }
 
-@media(max-width: 1200px){
+@media(max-width: 1300px){
     .bg .dialogContainer{
         text-align: center;
     }
@@ -224,7 +224,7 @@
 @media(max-width: 500px){
     .bg .dialogContainer{
         width: 85%;
-        font-size: 0.75em;
+        
     }
     .bg .dialogContainer .flex .imagesContainer .imageContainer img{
         width: 90px;

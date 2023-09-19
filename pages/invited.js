@@ -30,12 +30,6 @@ export default function Invited(props){
         e.preventDefault();
         setAudioIcon(!audioIcon);
         setMuted(!muted);
-        // if(muted){
-        //     Howler.volume(0);
-        // }else{
-        //     Howler.volume(1);
-        // }
-        // console.log("Howler playing: ", Howler.volume())
     }
 
     useEffect(()=>{
@@ -52,21 +46,6 @@ export default function Invited(props){
     useEffect(()=>{
         
         if(showDialog){
-            
-            // let musicAudio = setTimeout(()=>{
-            //     // music.setVolume(0.05);
-            //     // music.play();
-            //     playMusic();
-            //     // let fadeIn = setInterval(()=>{
-            //       if(mute){
-            //         muteMusic();
-            //       }else{
-            //         unMuteMusic();
-            //       }
-            //     // })
-            //     // setMusic(null);
-            //   }, 5000)
-            
             music.play()
        }
 
