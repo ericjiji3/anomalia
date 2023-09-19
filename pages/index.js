@@ -15,31 +15,60 @@ export default function Home() {
   const [mute, setMute] = useState(false);
   const audioRef = useRef();
 
+  useEffect(()=>{
+    setPing(new Audio('/pingSound.mp3'));
+  }, [])
+
   const setModal = () => {
-    setShowModal(!showModal);    
+    setShowModal(!showModal); 
+    // if(showModal){
+    //   if (ping) {
+    //     // let pingAudio = setTimeout(()=>{
+    //     //   ping.play()
+    //     //   setPing(null);
+    //     // }, 2500)
+
+    //     // return ()=>{
+    //     //   clearTimeout(pingAudio);
+    //     // }
+    //     ping.play();
+    //   } else {
+       
+    //     console.log('ERR')
+    //   }
+
+    // }
+    if(ping){
+      setTimeout(()=>{
+        ping.play();
+        setPing(null);
+      }, 2500)
+
+    }
   }
 
 
-  useEffect(()=>{
-    // setPing(new Audio('/pingSound.mp3'));
-    // setMusic(new Audio('/music.mp3'));
+  // useEffect(()=>{
+  //   setPing(new Audio('/pingSound.mp3'));
+  //   // setMusic(new Audio('/music.mp3'));
     
-    if(showModal){
-      if (ping) {
-        let pingAudio = setTimeout(()=>{
-          audioRef.current.play();
-        }, 2500)
+  //   if(showModal){
+  //     if (ping) {
+  //       let pingAudio = setTimeout(()=>{
+  //         ping.play()
+  //         setPing(null);
+  //       }, 2500)
 
-        return ()=>{
-          clearTimeout(pingAudio);
-        }
-      } else {
+  //       return ()=>{
+  //         clearTimeout(pingAudio);
+  //       }
+  //     } else {
        
-        console.log('ERR')
-      }
+  //       console.log('ERR')
+  //     }
 
-    }
-  }, [showModal])
+  //   }
+  // }, [showModal, mute])
 
 
   // useEffect(()=>{
