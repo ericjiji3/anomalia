@@ -5,19 +5,25 @@ import macStyles from '@sakun/system.css';
 import styles from '@/styles/Home.module.css'
 import {useState, useRef, useEffect} from 'react';
 import Invited from './invited';
+import {Howl, Howler} from 'howler';
 // import Ping from '../public/pingSound.mp3';
 
 const inter = Inter({ subsets: ['latin'] })
 
+
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
-  const [ping, setPing] = useState(null);
+  // const [ping, setPing] = useState(null);
   const [mute, setMute] = useState(false);
   const audioRef = useRef();
+  var ping = new Howl({
+    src: ['/pingSound.mp3']
+  });
 
-  useEffect(()=>{
-    setPing(new Audio('/pingSound.mp3'));
-  }, [])
+
+  // useEffect(()=>{
+  //   setPing(new Audio('/pingSound.mp3'));
+  // }, [])
 
   const setModal = () => {
     setShowModal(!showModal); 
@@ -41,7 +47,7 @@ export default function Home() {
     if(ping){
       setTimeout(()=>{
         ping.play();
-        setPing(null);
+        // setPing(null);
       }, 2500)
 
     }
