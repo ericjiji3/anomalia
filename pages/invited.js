@@ -26,6 +26,18 @@ export default function Invited(props){
     // const audioRef = useRef();
     const form = useRef();
     
+    function toggleIcon(e){
+        e.preventDefault();
+        setAudioIcon(!audioIcon);
+        setMuted(!muted);
+        // if(muted){
+        //     Howler.volume(0);
+        // }else{
+        //     Howler.volume(1);
+        // }
+        // console.log("Howler playing: ", Howler.volume())
+    }
+
     useEffect(()=>{
         if(props.show){
             let setDialog = setTimeout(()=>{
@@ -54,32 +66,22 @@ export default function Invited(props){
             //     // })
             //     // setMusic(null);
             //   }, 5000)
-            music.play();
-            if(muted){
-                music.volume = 0;
-            }else{
-                music.volume = 1;
-            }
+            
+            music.play()
+       }
+
+    }, [showDialog])
+
+    useEffect(()=>{
+        if(muted){
+            Howler.volume(0);
+        }else{
+            Howler.volume(1);
         }
+        console.log("Howler playing: ", Howler.volume())
+    }, [muted])
 
-    }, [showDialog, muted])
 
-    // useEffect(()=>{
-    //     if(music != null){
-    //         if(muted){
-    //             music.volume = 0;
-    //         }else{
-    //             music.volume = 1;
-    //         }
-    //     }
-    // }, [muted])
-
-    function toggleIcon(e){
-        e.preventDefault();
-        setAudioIcon(!audioIcon);
-        setMuted(!muted);
-        console.log("muteval: ", muted)
-    }
 
     function validateFields(data){
         var validate = true;
