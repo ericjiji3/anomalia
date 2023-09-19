@@ -15,7 +15,8 @@ export default function Home() {
   const [mute, setMute] = useState(false);
   const audioRef = useRef();
   var ping = new Howl({
-    src: ['/pingSound.mp3']
+    src: ['/pingSound.mp3'],
+    html5: true
   });
 
 

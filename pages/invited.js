@@ -20,7 +20,8 @@ export default function Invited(props){
     const [muted, setMuted] = useState(false);
     // const [music, setMusic] = useState(null);
     var music = new Howl({
-        src: ['/music.mp3']
+        src: ['/music.mp3'],
+        html5: true
       });
     
     // const audioRef = useRef();
@@ -140,7 +141,7 @@ export default function Invited(props){
                     <div className={styles.flex}>
                         <div className={styles.textContainer}>
                             <h1 className={`${styles.header} dialog-text`}>Your Invited</h1>
-                            <p className={`${styles.text} dialog-text`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus feugiat in ante metus dictum at. Accumsan in nisl nisi scelerisque eu ultrices vitae. Porttitor eget dolor morbi non. Pulvinar sapien et ligula ullamcorper malesuada proin libero. Euismod in pellentesque massa placerat duis ultricies lacus. Auctor neque vitae tempus quam pellentesque. Commodo elit at imperdiet dui accumsan sit amet nulla. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Arcu ac tortor dignissim convallis aenean et tortor at risus. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Nulla facilisi morbi tempus iaculis.</p>
+                            <p className={`${styles.text} dialog-text`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus feugiat in ante metus dictum at. Accumsan in nisl nisi scelerisque eu ultrices vitae. Porttitor eget dolor morbi non. Pulvinar sapien et ligula ullamcorper malesuada proin libero. Euismod in pellentesque massa placerat duis ultricies lacus. Auctor neque vitae tempus quam pellentesque. Commodo elit at imperdiet dui accumsan sit amet nulla. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Arcu ac tortor dignissim convallis aenean et tortor at risus.</p>
                             <form className={styles.inputContainer} ref={form} onSubmit={submitForm}>
                                 <div className={styles.labelInput}>
                                     <label for="name" className={`dialog-text`}>Full Name:</label>
