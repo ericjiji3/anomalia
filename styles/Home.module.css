@@ -1,7 +1,7 @@
 .homeContainer{
   overflow: hidden;
   display: block;
-  height: 100vh;
+  height: 100%;
   position: relative;
 }
 .overlay{
