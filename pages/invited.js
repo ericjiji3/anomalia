@@ -6,6 +6,7 @@ import im1 from '../public/images/dialogimg1.jpg';
 import im2 from '../public/images/dialogimg2.png';
 import im3 from '../public/images/dialogimg3.png';
 import emailjs from '@emailjs/browser';
+import {Howl, Howler} from 'howler';
 
 export default function Invited(props){
     const [showDialog, setShowDialog] = useState(false);
@@ -17,9 +18,12 @@ export default function Invited(props){
     const [success, setSuccess] = useState(false);
     const [audioIcon, setAudioIcon] = useState(true);
     const [muted, setMuted] = useState(false);
-    const [music, setMusic] = useState(null);
-
-    const audioRef = useRef();
+    // const [music, setMusic] = useState(null);
+    var music = new Howl({
+        src: ['/music.mp3']
+      });
+    
+    // const audioRef = useRef();
     const form = useRef();
     
     useEffect(()=>{
@@ -50,11 +54,11 @@ export default function Invited(props){
             //     // })
             //     // setMusic(null);
             //   }, 5000)
-            audioRef.current.play();
+            music.play();
             if(muted){
-                audioRef.current.volume = 0;
+                music.volume = 0;
             }else{
-                audioRef.current.volume = 1;
+                music.volume = 1;
             }
         }
 
@@ -141,7 +145,7 @@ export default function Invited(props){
 
     return(
         <div className={`${styles.invitedContainer} window`}>
-            <audio ref={audioRef} src='/music.mp3' />
+            {/* <audio ref={audioRef} src='/music.mp3' /> */}
             <div className={`title-bar`}>
                 <button aria-label="Close" onClick={toggleIcon} className={audioIcon ? `${styles.iconContainer} close` : `${styles.iconContainer} close ${styles.muted}`}></button>
                 <h1 className={`title`}>De Anima</h1>
