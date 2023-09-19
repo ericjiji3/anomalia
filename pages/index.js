@@ -16,30 +16,18 @@ export default function Home() {
   const audioRef = useRef();
 
   const setModal = () => {
+    setShowModal(!showModal);    
+  }
 
-    setShowModal(!showModal);
-
-    
-  }
-  const playMusic = () =>{
-    music.play();
-  }
-  const muteMusic = () =>{
-    music.volume = 0;;
-  }
-  const unMuteMusic = () =>{
-    music.volume = 1;
-  }
 
   useEffect(()=>{
-    setPing(new Audio('/pingSound.mp3'));
+    // setPing(new Audio('/pingSound.mp3'));
     // setMusic(new Audio('/music.mp3'));
     
     if(showModal){
       if (ping) {
         let pingAudio = setTimeout(()=>{
-          ping.play()
-          setPing(null);
+          audioRef.current.play();
         }, 2500)
 
         return ()=>{
@@ -51,7 +39,7 @@ export default function Home() {
       }
 
     }
-  }, [showModal, mute])
+  }, [showModal])
 
 
   // useEffect(()=>{
@@ -73,7 +61,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <audio ref={audioRef} src='/pingSound.mp3' /> */}
+      <audio ref={audioRef} src='/pingSound.mp3' />
       <div className={styles.homeContainer}>
         <div className={styles.overlay}></div>
         <div className={styles.screen}>

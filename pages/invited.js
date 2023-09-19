@@ -19,6 +19,7 @@ export default function Invited(props){
     const [muted, setMuted] = useState(false);
     const [music, setMusic] = useState(null);
 
+    const audioRef = useRef();
     const form = useRef();
     
     useEffect(()=>{
@@ -30,12 +31,12 @@ export default function Invited(props){
                 clearTimeout(setDialog);
             }
         }
-        
     },[props.show])
 
     useEffect(()=>{
+        
         if(showDialog){
-            setMusic(new Audio('/music.mp3'));
+            
             // let musicAudio = setTimeout(()=>{
             //     // music.setVolume(0.05);
             //     // music.play();
@@ -49,15 +50,30 @@ export default function Invited(props){
             //     // })
             //     // setMusic(null);
             //   }, 5000)
-            music.play();
+            audioRef.current.play();
+            if(muted){
+                audioRef.current.volume = 0;
+            }else{
+                audioRef.current.volume = 1;
+            }
         }
-    }, [music, showDialog])
+
+    }, [showDialog, muted])
+
+    // useEffect(()=>{
+    //     if(music != null){
+    //         if(muted){
+    //             music.volume = 0;
+    //         }else{
+    //             music.volume = 1;
+    //         }
+    //     }
+    // }, [muted])
 
     function toggleIcon(e){
         e.preventDefault();
         setAudioIcon(!audioIcon);
         setMuted(!muted);
-        props.setMute(muted)
         console.log("muteval: ", muted)
     }
 
@@ -125,6 +141,7 @@ export default function Invited(props){
 
     return(
         <div className={`${styles.invitedContainer} window`}>
+            <audio ref={audioRef} src='/music.mp3' />
             <div className={`title-bar`}>
                 <button aria-label="Close" onClick={toggleIcon} className={audioIcon ? `${styles.iconContainer} close` : `${styles.iconContainer} close ${styles.muted}`}></button>
                 <h1 className={`title`}>De Anima</h1>
