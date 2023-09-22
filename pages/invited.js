@@ -127,6 +127,7 @@ export default function Invited(props){
 
     return(
         <div className={`${styles.invitedContainer} window`}>
+            <div className={`${styles.vhsEffect}`}></div>
             {/* <audio ref={audioRef} src='/music.mp3' /> */}
             <div className={`title-bar`}>
                 <button aria-label="Close" onClick={toggleIcon} className={audioIcon ? `${styles.iconContainer} close` : `${styles.iconContainer} close ${styles.muted}`}></button>
