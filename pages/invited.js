@@ -171,13 +171,13 @@ export default function Invited(props){
                         </div>
                         <div className={styles.imagesContainer}>
                             <div className={styles.imageContainer}>
-                                <Image src={im1} width={120} height={120} alt="oops"/>
+                                <Image src={im1} width={120} height={120} alt="oops" priority={true}/>
                             </div>
                             <div className={styles.imageContainer}>
-                                <Image src={im2} width={120} height={120} alt="oops"/>
+                                <Image src={im2} width={120} height={120} alt="oops" priority={true}/>
                             </div>
                             <div className={styles.imageContainer}>
-                                <Image src={im3} width={120} height={120} alt="oops"/>
+                                <Image src={im3} width={120} height={120} alt="oops" priority={true}/>
                             </div>
                         </div>
                     </div>
