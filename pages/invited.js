@@ -5,6 +5,7 @@ import Image from 'next/image';
 import im1 from '../public/images/dialogimg1.jpg';
 import im2 from '../public/images/dialogimg2.png';
 import im3 from '../public/images/dialogimg3.png';
+import logoImage from '../public/logo.png';
 import emailjs from '@emailjs/browser';
 import {Howl, Howler} from 'howler';
 
@@ -141,8 +142,11 @@ export default function Invited(props){
                     
                     <div className={styles.flex}>
                         <div className={styles.textContainer}>
-                            <h1 className={`${styles.header} dialog-text`}>Your Invited</h1>
-                            <p className={`${styles.text} dialog-text`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Risus feugiat in ante metus dictum at. Accumsan in nisl nisi scelerisque eu ultrices vitae. Porttitor eget dolor morbi non. Pulvinar sapien et ligula ullamcorper malesuada proin libero. Euismod in pellentesque massa placerat duis ultricies lacus. Auctor neque vitae tempus quam pellentesque. Commodo elit at imperdiet dui accumsan sit amet nulla. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Arcu ac tortor dignissim convallis aenean et tortor at risus.</p>
+                            <Image className={styles.logoContainer} src={logoImage} width={150} alt="oops" priority={true}/>
+                            <h1 className={`${styles.header} dialog-text`}>Your Invited!</h1>
+                            <p className={`${styles.text} dialog-text`}>To De Anima,</p>
+                            <p className={`${styles.text} dialog-text`}>When: December 31st, 2023.<br/>Where: Guanacaste, Costa Rica.<br/>Doors open 7pm<br/>+21</p>
+                            <p className={`${styles.text} dialog-text`}>RSVP below to buy tickets.</p>
                             <form className={styles.inputContainer} ref={form} onSubmit={submitForm}>
                                 <div className={styles.labelInput}>
                                     <label for="name" className={`dialog-text`}>Full Name:</label>

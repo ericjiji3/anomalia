@@ -114,6 +114,9 @@
     flex-direction: column;
     justify-content: space-between; */
 }
+.logoContainer{
+    background-size: cover;
+}
 .bg .dialogContainer .flex .textContainer .text{
     margin-bottom: 15px;
 }
@@ -252,13 +255,19 @@
 
 }
 @media(max-width: 500px){
+    .bg{
+        height: 100%;
+    }
     .bg .dialogContainer{
         width: 90%;
-        
+        top: 45%;
     }
     .bg .dialogContainer .flex .imagesContainer .imageContainer img{
         width: 90px;
         height: 100px;
+    }
+    .bg .dialogContainer .flex .imagesContainer{
+        margin-bottom: 0px;
     }
     .invitedContainer .iconContainer{
         display: none;

@@ -39,7 +39,7 @@ export default function Home() {
         <title>De Anima</title>
         <meta name="description" content="De Anima" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <audio ref={audioRef} src='/pingSound.mp3' />
       <div className={styles.homeContainer}>
