@@ -143,7 +143,7 @@ export default function Invited(props){
                     <div className={styles.flex}>
                         <div className={styles.textContainer}>
                             <Image className={styles.logoContainer} src={logoImage} width={150} alt="oops" priority={true}/>
-                            <h1 className={`${styles.header} dialog-text`}>You're Invited!</h1>
+                            <h1 className={`${styles.header} dialog-text`}>You&apos;re Invited!</h1>
                             <p className={`${styles.text} dialog-text`}>To De Anima,</p>
                             <p className={`${styles.text} dialog-text`}>When: December 31st, 2023.<br/>Where: Guanacaste, Costa Rica.<br/>Doors open 7pm<br/>+21</p>
                             <p className={`${styles.text} dialog-text`}>RSVP below to buy tickets.</p>
